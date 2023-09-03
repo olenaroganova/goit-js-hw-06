@@ -5,19 +5,22 @@ const buttonDestroyEl = document.querySelector('[data-destroy]');
 const inputElement = document.querySelector('input');
 const divEl = document.querySelector('#boxes')
 
-
 let collection = [];
 
 buttonCreateEl.addEventListener('click', makeCollection);
 function makeCollection(event) {
   const numberOfElements = Number(inputElement.value);
 
+  let arr = [];
   for (let i = 1; i <= numberOfElements; i += 1) {
     const pEl = document.createElement('p');
     pEl.textContent = `Ваша колекція ${i}`;
-    divEl.append(pEl);
+    arr.push(pEl.textContent)
   }
+  divEl.append([...arr])
 }
+console.log(divEl);
+
 
 buttonDestroyEl.addEventListener('click', () => {
   divEl.innerHTML = '';
@@ -29,9 +32,10 @@ buttonDestroyEl.addEventListener('click', () => {
 // Кожен елемент після першого повинен бути ширшим і вищим від попереднього на 10px.
 // Всі елементи повинні мати випадковий колір фону у форматі HEX. Використовуй готову функцію getRandomHexColor для отримання кольору.
 
+const boxesDiv = document.querySelector('#boxes');
+
 function createBoxes(amount) {
-  const boxesDiv = document.querySelector('#boxes');
-  const baseSize = 30;
+    const baseSize = 30;
 
   for (let i = 0; i < amount; i += 1) {
     const box = document.createElement('div');
@@ -55,8 +59,7 @@ function getRandomHexColor() {
 // createBoxes(8);
 
 function destroyBoxes() {
-  const boxesDiv = document.querySelector('#boxes')
-  boxesDiv.innerHTML = '';
+    boxesDiv.innerHTML = '';
 }
 
 // Виклик функції destroyBoxes

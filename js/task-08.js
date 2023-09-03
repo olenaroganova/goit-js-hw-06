@@ -11,21 +11,17 @@ formEl.addEventListener("submit", onSubmit);
 
 function onSubmit(event) {
     event.preventDefault();
-    const emailInput = formEl.elements.email;
-    const passwordInput = formEl.elements.password;
+    const emailInput = formEl.elements.email.value;
+    const passwordInput = formEl.elements.password.value;
 
-    if (!emailInput.value || !passwordInput.value) { alert("Всі поля мають бути заповнені") }
-    else {
-        const info = {
-            email: emailInput.value,
-            password: passwordInput.value,
-        };
-        console.log(info);
-        event.currentTarget.reset();
-        }
-    
+    if (!emailInput || !passwordInput) { return alert("Всі поля мають бути заповнені") }
+    const info = {
+        email: emailInput,
+        password: passwordInput
+    }
+    console.log(info);
+    event.currentTarget.reset();
 }
-
 
 
 
